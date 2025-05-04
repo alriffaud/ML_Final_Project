@@ -1,0 +1,32 @@
+# Web framework
+Django>=4.1,<5.0
+djangorestframework>=3.14
+
+# MySQL driver
+pymysql>=1.0
+
+# ETL & analysis
+pandas>=2.0
+numpy>=1.24
+scipy>=1.10
+python-dotenv>=1.0
+
+# Machine Learning / Deep Learning
+scikit-learn>=1.2
+tensorflow==2.15.0
+keras==2.15.0
+
+# Data versioning & orchestration
+dvc>=2.30
+celery>=5.3
+redis>=4.5
+
+# Visualization
+matplotlib>=3.7
+seaborn>=0.12
+
+# Utilities
+jsonschema>=4.18
+
+# Storing and uploading files
+pyarrow
