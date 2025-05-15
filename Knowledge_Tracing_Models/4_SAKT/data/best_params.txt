@@ -1,0 +1,4 @@
+d_model: 128
+max_len: 100
+dropout: 0.2
+batch_size: 64
