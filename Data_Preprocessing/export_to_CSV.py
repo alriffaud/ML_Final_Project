@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
 """
 This script connects to a MySQL database, extracts data from three tables,
-and loads them into pandas DataFrames, checking for the presence of required columns.
-It also prints the shape, columns, first rows, and information about each DataFrame.
+and loads them into pandas DataFrames, checking for the presence of required
+columns. It also prints the shape, columns, first rows, and information about
+each DataFrame.
 """
 import pymysql
 import pandas as pd
@@ -25,13 +27,17 @@ try:
     # Extract data from SQL tables
     # Load data into pandas DataFrames
     quizzes_df = pd.read_sql("SELECT * FROM evaluation_quizzes", connection)
-    questions_df = pd.read_sql("SELECT * FROM evaluation_quiz_questions", connection)
-    corrections_df = pd.read_sql("SELECT * FROM evaluation_quiz_corrections", connection)
+    questions_df = pd.read_sql("SELECT * FROM evaluation_quiz_questions",
+                               connection)
+    corrections_df = pd.read_sql("SELECT * FROM evaluation_quiz_corrections",
+                                 connection)
 
     required = {
-        'quizzes'   : ['id','time_allowed','online','name'],
-        'questions' : ['id','evaluation_quiz_id','category','question_type','data_json'],
-        'corrections': ['id','user_id','start_time','end_time','data_json','skipped']
+        'quizzes': ['id', 'time_allowed', 'online', 'name'],
+        'questions': ['id', 'evaluation_quiz_id', 'category', 'question_type',
+                      'data_json'],
+        'corrections': ['id', 'user_id', 'start_time', 'end_time', 'data_json',
+                        'skipped']
     }
     dfs = {
         'quizzes': quizzes_df,
