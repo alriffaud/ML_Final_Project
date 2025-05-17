@@ -1,4 +1,8 @@
-# Machine Learning - Final Project
+<h1 align="center">Machine Learning - Final Project</h1>
+
+<p align="center">
+  <img src="https://i.imgur.com/9pbFvRz.png">
+</p>
 
 ## Table of Contents
 - [Project overview:](#Project-overview)
@@ -9,7 +13,7 @@
   - [Data Extraction & Schema Validation](#Data-Extraction-&-Schema-Validation)
   - [Exploratory Data Analysis (EDA)](#Exploratory-Data-Analysis-(EDA))
   - [Extract-Transform-Load (ETL) Pipeline](#Extract-Transform-Load-(ETL)-Pipeline)
-  - [Data Splitting: Train / Validation / Test](#Data-Splitting:-Train-/Validation-/Test)
+  - [Data Splitting: Train, Validation, Test](#Data-Splitting:-Train,-Validation,-Test)
 - [Knowledge Tracing Models](#Knowledge-Tracing-Models)
   - [Bayesian Knowledge Tracing (BKT)](#Bayesian-Knowledge-Tracing-(BKT))
   - [Performance Factors Analysis (PFA)](#Performance-Factors-Analysis-(PFA))
@@ -45,10 +49,22 @@ This project demonstrates end‑to‑end how to build, compare, and deploy state
 ## System Architecture
 
 Below is a high‑level diagram of the complete solution, from data ingestion to real‑time inference:
+<p align="center">
+  <img src="https://i.imgur.com/BIZS8Iq.png">
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/tBBrqXC.png">
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/nS90o7y.png">
+</p>
 
 ## Technologies Used
 
 The following is a table showing the main technologies used during the project, indicating the use given to each:
+<p align="center">
+  <img src="https://i.imgur.com/VBPbRt9.png">
+</p>
 
 ## Data Preprocessing
 
@@ -123,6 +139,10 @@ The following steps are performed in this script:
     - calculate the hit rates for each question.
     - verify the hypothesis that if the *hit_rate* is equal to zero, then the *value* field is not observed in the *items* list of the *data_json* dictionary.
 
+<p align="center">
+  <img src="https://i.imgur.com/9Gskyly.png">
+</p>
+
 ### [Extract-Transform-Load (ETL) Pipeline](#Data_Preprocessing/3_etl.ipynb)
 The ETL pipeline is performed in the *3_etl.ipynb* script. In this script, we will extract the data from the CSV files, transform it to fit our needs, and load it into a SQLite database.
 The following steps are performed in this script:
@@ -150,7 +170,11 @@ The following steps are performed in this script:
 6. **Save Intermediate Outputs**: proceed to save them in Parquet format for later use in the Knowledge Tracing models.
 7. **ETL Specification**: resume the ETL process that we have followed in this notebook.
 
-### [Data Splitting: Train / Validation / Test](#Data_Preprocessing/4_split.ipynb)
+<p align="center">
+  <img src="https://i.imgur.com/F1oDkbO.png">
+</p>
+
+### [Data Splitting: Train, Validation, Test](#Data_Preprocessing/4_split.ipynb)
 The data splitting is performed in the *4_split.ipynb* script. In this script, we will split the data into training, validation, and test sets.
 For this file, in case it is in Colab, the file *requirements.colab.txt* must be copied to the root of the project, together with the files *interactions_clean.parquet*, *quizzes_clean.parquet* and *questions_clean.parquet*, which must be placed in the *data* folder.
 The following steps are performed in this script:
@@ -237,6 +261,10 @@ Key aspects of the training loop:
     - **Calibration Curve**: evaluate how well the predicted probabilities align with actual outcomes, globally.
 10. **Conclusion**: summarize the findings and limitations of the model, as well as the steps to be taken for future improvements.
 
+<p align="center">
+  <img src="https://i.imgur.com/2ckefkp.png">
+</p>
+
 ### [Self-Attentive Knowledge Tracing (SAKT)](#Knowledge_Tracing_Models/4_SAKT/sakt.ipynb)
 This model is based on the paper called *Self-Attentive Models for Knowledge Tracing* by Pandey & Karypis (2019). The model is a self-attentive neural network that uses attention mechanisms to capture the relationships between different questions and the knowledge states of students. The model is designed to predict the probability of a student answering a question correctly based on their previous interactions with other questions.
 The following steps are performed in this script:
@@ -285,6 +313,10 @@ The following steps are performed in this script:
     - **Confusion Matrix** — shows absolute counts of correct/incorrect decisions at the 0.5 threshold.  
 Then we drill down to individual students (“best,” “middle,” “worst”) to see how the predicted probability evolves over time. Finally, we assess the model’s overall **calibration** by plotting actual hit‐rates against predicted probabilities.
 10. **Conclusion**: summarize the findings and limitations of the model, as well as the steps to be taken for future improvements.
+
+<p align="center">
+  <img src="https://i.imgur.com/OZmxCVt.png">
+</p>
 
 ### [Attentive Knowledge Tracing (AKT)](#Knowledge_Tracing_Models/5_AKT/akt.ipynb)
 This model is based on the paper called *Context-Aware Attentive Knowledge Tracing* by Ghosh et al. (2020). The model is designed to predict the probability of a student answering a question correctly based on their past performance and the context of the question. Extends Self-Attentive Knowledge Tracing (SAKT) with an architecture that combines dynamic memory and attention mechanisms.
@@ -335,12 +367,21 @@ The following steps are performed in this script:
 Then we drill down to individual students (“best,” “middle,” “worst”) to see how the predicted probability evolves over time. Finally, we assess the model’s overall **calibration** by plotting actual hit‐rates against predicted probabilities.
 10. **Conclusion**: summarize the findings and limitations of the model, as well as the steps to be taken for future improvements.
 
+<p align="center">
+  <img src="https://i.imgur.com/0F8LIVp.png">
+</p>
+
 ## [Comparative Analysis Models](#Knowledge_Tracing_Models/comparative_analysis_models.ipynb)
 From the analysis made in *comparative_analysis_models.ipynb* file, the following can be concluded:
     - Best Ranking Performance: DKT excels at AUC but needs calibration.
     - Best Calibration & Interpretability: SAKT offers well‑calibrated probabilities and attention‑based explanations.
     - Simplicity & Insight: BKT/PFA remain valuable for rapid prototyping and conceptual clarity.
     - Context Sensitivity: AKT innovates with IRT embeddings and time decay, but at a higher computational cost.
+
+<p align="center">
+  <img src="https://i.imgur.com/98h6yQ3.png">
+</p>
+
 Taking into account predictive performance, interpretability, computational requirements, and robustness, SAKT emerges as the most balanced choice for real‑world educational platforms:
 - **Strong, Consistent Performance**: Test AUC ≈ 0.80 and accuracy ≈ 0.74 — close to the best deep models but without their training pitfalls.
 - **Interpretability & Diagnostics**: Attention weights can be visualized to explain predictions and guide instructors.
@@ -476,6 +517,6 @@ This extensive project demonstrates that Knowledge Tracing is as much about data
 
 The choice of the “best” model ultimately depends on priorities — accuracy vs. interpretability vs. computational cost. Yet the blended approach of robust preprocessing, classical baselines, and advanced deep architectures provides a blueprint for building the next generation of adaptive learning platforms.
 
-## Authors :black_nib:
+## Author :black_nib:
 - Alberto Riffaud - [GitHub](https://github.com/alriffaud) | [Linkedin](https://www.linkedin.com/in/alberto-riffaud) | [Personal Website](https://alriffaud.github.io/)<br>
 Passionate about technology, especially in the field of artificial intelligence and machine learning, I seek to contribute to the development of innovative solutions. My training and experience as a mathematics and physics teacher for 25 years have provided me with analytical skills, problem-solving and effective communication, complemented by my participation in development teams and extensive knowledge of programming languages ​​such as Python and C. I am a persevering person, responsible and oriented towards self-learning, always seeking efficiency and clarity in the code.
