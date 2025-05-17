@@ -1,0 +1,6 @@
+d_model: 64
+n_heads: 2
+d_ff: 128
+dropout: 0.2
+max_len: 100
+batch_size: 128

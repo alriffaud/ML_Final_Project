@@ -8,10 +8,11 @@ pandas==2.2.2
 matplotlib==3.10.1
 seaborn==0.13.2
 
-# Optional for statistics and light ML
+# Machine Learning / Deep Learning
+tensorflow==2.15.0
+keras==2.15.0
 scipy>=1.10.0,<2.0.0
 scikit-learn>=1.2.0,<2.0.0
 
 # Saving and loading files in 'parquet' format
 pyarrow
-
