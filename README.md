@@ -13,7 +13,7 @@
   - [Data Extraction & Schema Validation](#Data-Extraction-&-Schema-Validation)
   - [Exploratory Data Analysis (EDA)](#Exploratory-Data-Analysis-(EDA))
   - [Extract-Transform-Load (ETL) Pipeline](#Extract-Transform-Load-(ETL)-Pipeline)
-  - [Data Splitting: Train, Validation, Test](#Data-Splitting:-Train,-Validation,-Test)
+  - [Data Splitting (Train, Validation, Test)](#Data-Splitting-(Train,-Validation,-Test))
 - [Knowledge Tracing Models](#Knowledge-Tracing-Models)
   - [Bayesian Knowledge Tracing (BKT)](#Bayesian-Knowledge-Tracing-(BKT))
   - [Performance Factors Analysis (PFA)](#Performance-Factors-Analysis-(PFA))
@@ -68,7 +68,7 @@ The following is a table showing the main technologies used during the project, 
 
 ## Data Preprocessing
 
-### [Obtaining data files](#Data_Preprocessing/export_to_CSV.py)
+### [Obtaining data files](Data_Preprocessing/export_to_CSV.py)
 
 Note: This part is optional, as the output files are already available in the Data_Preprocessing/data folder.
 
@@ -93,7 +93,7 @@ $ python3 export_to_CSV.py
 
 This will generate the output files in the Data_Preprocessing/data folder.
 
-### [Data Extraction & Schema Validation](#Data_Preprocessing/1_data_extraction.ipynb)
+### [Data Extraction & Schema Validation](Data_Preprocessing/1_data_extraction.ipynb)
 
 If you are using Colab, you should copy the *quizzes.csv*, *questions.csv* and *corrections.csv* files into a folder called *data* in the root directory of the project. If you cloned the repository and are working locally, you will already have the folder with the necessary files. In addition (in case you are using Colab) you should copy the file requirements.colab.txt into the root directory of the project. This file contains the libraries needed to run the *1_data_extraction.ipynb* script (you must uncomment the first cell in order to install the required libraries.). In case you are working locally, you can skip this step, as the requirements.txt file is already included in the repository. To install the required libraries, run the following command in the terminal:
 
@@ -111,7 +111,7 @@ You can open the *1_data_extraction.ipynb* file to see the contents in detail an
     - check the first rows of the dataframes to know the data better.
     - obtain the information about the dataframes to check the types of the columns and their null values.
 
-### [Exploratory Data Analysis (EDA)](#Data_Preprocessing/2_eda.ipynb)
+### [Exploratory Data Analysis (EDA)](Data_Preprocessing/2_eda.ipynb)
 
 Once the data has been extracted and validated, we can proceed to the exploratory data analysis (EDA) phase. This phase is performed in the *2_EDA.ipynb* script. In this script, we will analyze the data to gain insights and understand its characteristics.
 
@@ -143,7 +143,8 @@ The following steps are performed in this script:
   <img src="https://i.imgur.com/9Gskyly.png">
 </p>
 
-### [Extract-Transform-Load (ETL) Pipeline](#Data_Preprocessing/3_etl.ipynb)
+### [Extract-Transform-Load (ETL) Pipeline](Data_Preprocessing/3_etl.ipynb)
+
 The ETL pipeline is performed in the *3_etl.ipynb* script. In this script, we will extract the data from the CSV files, transform it to fit our needs, and load it into a SQLite database.
 The following steps are performed in this script:
 1. **Extraction**: the necessary libraries are imported and the CSV files are loaded into pandas dataframes.
@@ -174,7 +175,8 @@ The following steps are performed in this script:
   <img src="https://i.imgur.com/F1oDkbO.png">
 </p>
 
-### [Data Splitting: Train, Validation, Test](#Data_Preprocessing/4_split.ipynb)
+### [Data Splitting (Train, Validation, Test)](Data_Preprocessing/4_split.ipynb)
+
 The data splitting is performed in the *4_split.ipynb* script. In this script, we will split the data into training, validation, and test sets.
 For this file, in case it is in Colab, the file *requirements.colab.txt* must be copied to the root of the project, together with the files *interactions_clean.parquet*, *quizzes_clean.parquet* and *questions_clean.parquet*, which must be placed in the *data* folder.
 The following steps are performed in this script:
@@ -185,7 +187,7 @@ The following steps are performed in this script:
 5. **Save Splits to Disk**: save the three sets of DataFrames in Parquet format for use in the scripts of the different Knowledge Tracing models.
 
 ## Knowledge Tracing Models
-### [Bayesian Knowledge Tracing (BKT)](#Knowledge_Tracing_Models/1_BKT/bkt.ipynb)
+### [Bayesian Knowledge Tracing (BKT)](Knowledge_Tracing_Models/1_BKT/bkt.ipynb)
 
 In this notebook we implement, train, validate, and test a **Bayesian Knowledge Tracing** model following the paper called *Knowledge Tracing: Modeling the Acquisition of Procedural Knowledge* Corbett & Anderson (1995). This paper proposes a model to predict the probability of a student answering a question correctly based on their previous interactions with similar questions. The model is based on the idea that students learn over time and that their knowledge can be represented as a hidden state.
 The following steps are performed in this script:
@@ -199,7 +201,8 @@ The following steps are performed in this script:
 8. **Example Learning Curve for a Single Skill**: example of the evolution of the probability of knowledge (p_L) across opportunities for a representative student and ability. 
 9. **Conclusion**: summarize the findings and limitations of the model, as well as the steps to be taken for future improvements.
 
-### [Performance Factors Analysis (PFA)](#Knowledge_Tracing_Models/2_PFA/pfa.ipynb)
+### [Performance Factors Analysis (PFA)](Knowledge_Tracing_Models/2_PFA/pfa.ipynb)
+
 This model is based on the paper called *Performance Factors Analysis - A New Alternative to Knowledge Tracing* by Pavlik, Cen & Koedinger (2009).
 The paper proposes a new model for student learning that is based on the idea of performance factors, which are the underlying cognitive processes that influence a student's performance on a task. The model is designed to be more flexible and interpretable than traditional knowledge tracing models, and it has been shown to be effective in predicting student performance in a variety of educational contexts.
 The following steps are performed in this script:
@@ -231,7 +234,8 @@ $$
     -  **Learning curve example**: predicted probability along the chances 4.
 10. **Conclusion**: summarize the findings and limitations of the model, as well as the steps to be taken for future improvements.
 
-### [Deep Knowledge Tracing (DKT)](#Knowledge_Tracing_Models/3_DKT/dkt.ipynb)
+### [Deep Knowledge Tracing (DKT)](Knowledge_Tracing_Models/3_DKT/dkt.ipynb)
+
 This model is based on the paper called *Deep Knowledge Tracing* by Piech et al. (2015). The model is a recurrent neural network (RNN) that learns to predict a student's future performance based on their past interactions with a learning system. The DKT model uses a Long Short-Term Memory (LSTM) network to capture the temporal dependencies in the student's performance data.
 The following steps are performed in this script:
 1. **Introduction**: this section introduces the DKT model and explains how it works.
@@ -265,7 +269,8 @@ Key aspects of the training loop:
   <img src="https://i.imgur.com/2ckefkp.png">
 </p>
 
-### [Self-Attentive Knowledge Tracing (SAKT)](#Knowledge_Tracing_Models/4_SAKT/sakt.ipynb)
+### [Self-Attentive Knowledge Tracing (SAKT)](Knowledge_Tracing_Models/4_SAKT/sakt.ipynb)
+
 This model is based on the paper called *Self-Attentive Models for Knowledge Tracing* by Pandey & Karypis (2019). The model is a self-attentive neural network that uses attention mechanisms to capture the relationships between different questions and the knowledge states of students. The model is designed to predict the probability of a student answering a question correctly based on their previous interactions with other questions.
 The following steps are performed in this script:
 1. **Introduction**: this section introduces the SAKT model and explains how it works.
@@ -318,7 +323,8 @@ Then we drill down to individual students (“best,” “middle,” “worst”
   <img src="https://i.imgur.com/OZmxCVt.png">
 </p>
 
-### [Attentive Knowledge Tracing (AKT)](#Knowledge_Tracing_Models/5_AKT/akt.ipynb)
+### [Attentive Knowledge Tracing (AKT)](Knowledge_Tracing_Models/5_AKT/akt.ipynb)
+
 This model is based on the paper called *Context-Aware Attentive Knowledge Tracing* by Ghosh et al. (2020). The model is designed to predict the probability of a student answering a question correctly based on their past performance and the context of the question. Extends Self-Attentive Knowledge Tracing (SAKT) with an architecture that combines dynamic memory and attention mechanisms.
 The following steps are performed in this script:
 1. **Introduction**: this section introduces the AKT model and explains how it works.
@@ -371,7 +377,8 @@ Then we drill down to individual students (“best,” “middle,” “worst”
   <img src="https://i.imgur.com/0F8LIVp.png">
 </p>
 
-## [Comparative Analysis Models](#Knowledge_Tracing_Models/comparative_analysis_models.ipynb)
+## [Comparative Analysis Models](Knowledge_Tracing_Models/comparative_analysis_models.ipynb)
+
 From the analysis made in *comparative_analysis_models.ipynb* file, the following can be concluded:
     - Best Ranking Performance: DKT excels at AUC but needs calibration.
     - Best Calibration & Interpretability: SAKT offers well‑calibrated probabilities and attention‑based explanations.
@@ -389,7 +396,8 @@ Taking into account predictive performance, interpretability, computational requ
 - **Calibrated Probabilities**: Good Brier score and calibration curve support reliable decision‑making (e.g., mastery thresholds).
 - **Extensible Architecture**: Additional features (response time, content embeddings) can be integrated into the attention framework.
 
-## [SAKT Inference Application](#SAKT_Inference_Application/inference.py)
+## [SAKT Inference Application](SAKT_Inference_Application/inference.py)
+
 Once we decided that SAKT was our production‐ready Knowledge Tracing model, we built a lightweight inference script (*inference.py*) to:
 1. **Load** the trained model and its metadata (architecture, weights, token encodings).
 2. **Stream** a student’s history of question–response interactions.
